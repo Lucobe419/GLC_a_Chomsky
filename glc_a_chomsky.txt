@@ -1,0 +1,69 @@
+GLC a utilizar:
+S -> ASA | aB
+A -> B | S
+B -> b | ε
+
+Paso 1: Nueva variable inicial C
+C -> S
+S -> ASA | aB
+A -> B | S
+B -> b | ε
+
+Paso 2: Eliminar ε de la variable B
+C -> S
+S -> ASA | aB | a
+A -> B | S | ε
+B -> b
+
+Paso 3: Eliminar ε de la variable A
+C -> S
+S -> ASA | aB | a | AS | SA | S
+A -> B | S
+B -> b
+
+Paso 4: Eliminar la regla unitaria S de la variable S
+C -> S
+S -> ASA | aB | a | AS | SA
+A -> B | S
+B -> b
+
+Paso 5: Eliminar la regla unitaria B de la variable A
+C -> S
+S -> ASA | aB | a | AS | SA
+A -> S | b
+B -> b
+
+Paso 6: Eliminar la regla unitaria S de la variable A
+C -> S
+S -> ASA | aB | a | AS | SA
+A -> b | ASA | aB | a | AS | SA
+B -> b
+
+Paso 7: Eliminar la regla unitaria S de la variable C
+C -> ASA | aB | a | AS | SA
+S -> ASA | aB | a | AS | SA
+A -> b | ASA | aB | a | AS | SA
+B -> b
+
+Paso 8: Cambiar 'AS' por D en todas las reglas grandes
+C -> DA | aB | a | AS | SA
+S -> DA | aB | a | AS | SA
+A -> b | DA | aB | a | AS | SA
+B -> b
+D -> AS
+
+Paso 9: Cambiar la terminal 'a' por E donde tambien haya una variable
+C -> DA | EB | a | AS | SA
+S -> DA | EB | a | AS | SA
+A -> b | DA | EB | a | AS | SA
+B -> b
+D -> AS
+E -> a
+
+Resultado Final:
+C -> DA | EB | a | AS | SA
+S -> DA | EB | a | AS | SA
+A -> b | DA | EB | a | AS | SA
+B -> b
+D -> AS
+E -> a
